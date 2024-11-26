@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hedieaty_mobile_app/components/__init__.dart';
 import 'package:hedieaty_mobile_app/pages/__init__.dart';
+import 'package:hedieaty_mobile_app/pages/sign_in.dart';
 
 import 'package:hedieaty_mobile_app/static/__init__.dart';
 
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
           case '/home':
-            return MaterialPageRoute(builder: (context) => const HomePage());
+            return MaterialPageRoute(builder: (context) => const SignIn());
           case '/add-friend':
             return MaterialPageRoute(builder: (context) => const AddFriend());
           case '/create-event':
@@ -51,10 +52,9 @@ class MyApp extends StatelessWidget {
           case '/event-gifts':
             final args = settings.arguments as EventGifts;
             return MaterialPageRoute(
-              builder: (context) => EventGifts(
-                eventId: args.eventId,
-              )
-            );
+                builder: (context) => EventGifts(
+                      eventId: args.eventId,
+                    ));
           case '/chat-screen':
             final args = settings.arguments as ChatScreen;
             return MaterialPageRoute(
@@ -79,36 +79,34 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: false,
+            automaticallyImplyLeading: false,
             title: Padding(
-          padding: const EdgeInsets.only(top: 8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                'Hedeaity',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 28.0,
-                ),
-              ),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.green,
-                    foregroundColor: AppColors.background,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.0),
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Hedeaity',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 28.0,
                     ),
                   ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/create-event');
-                  },
-                  child: const Text('Create Event')
-                )
-            ],
-          ),
-        )
-      ),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.green,
+                        foregroundColor: AppColors.background,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/create-event');
+                      },
+                      child: const Text('Create Event'))
+                ],
+              ),
+            )),
         body: const Padding(
           padding: EdgeInsets.all(20.0),
           child: Column(
