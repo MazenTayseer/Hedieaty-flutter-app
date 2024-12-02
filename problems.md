@@ -1,0 +1,2 @@
+- Handle errorMessage in sign in
+- Events and gifts load for all users, not current user only
